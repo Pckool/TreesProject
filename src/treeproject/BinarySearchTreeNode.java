@@ -91,7 +91,28 @@ public class BinarySearchTreeNode<T extends Comparable<T>>
 		
 	}
 	public void addNode(BinarySearchTreeNode<T> newNode,int start,String code){
-            
+            Character c = code.charAt(start);
+            if(c == '.'){
+                // Go left
+                
+                // If left is null then set left to newNode
+                if(left == null){
+                    left = newNode;
+                }
+                // Else left.addNode(newNode, start+1, code)
+                else{
+                    left.addNode(newNode, start+1, code);
+                }
+            }
+            if(c == '-'){
+                // Go right
+                
+                // If right is null then set right to newNode
+                if(right == null)
+                    right = newNode;
+                else
+                    right.addNode(newNode, start+1, code);
+            }
         }
 	public boolean hasLeft()
 	{
